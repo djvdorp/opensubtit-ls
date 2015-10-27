@@ -1,0 +1,4 @@
+argparse==1.2.1
+-e git+https://github.com/agonzalezro/python-opensubtitles@9245a16b0d0f8c1f7cb61faef73e735fa4a50a32#egg=python_opensubtitles-master
+tabulate==0.7.5
+wsgiref==0.1.2
