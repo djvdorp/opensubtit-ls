@@ -4,7 +4,7 @@ from datetime import datetime
 import argparse
 import re
 
-if __name__ == '__main__':
+def main():
     parser = argparse.ArgumentParser(description="List available subtitles for a show")
     parser.add_argument("show", help="Show you want to list the subtitles for")
     parser.add_argument("-s", "--season", help="Season you want to list", type=int, default=1)
@@ -37,3 +37,6 @@ if __name__ == '__main__':
 
     print "total {}".format(len(table))
     print tabulate(table, tablefmt="plain")
+
+if __name__ == '__main__':
+    main()
