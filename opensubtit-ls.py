@@ -1,15 +1,22 @@
 from pythonopensubtitles.opensubtitles import OpenSubtitles
 from tabulate import tabulate
 from datetime import datetime
+import argparse
 import re
 
-sub_language = 'dut'
-show_name = 'Suits'
-season = '4'
-
 if __name__ == '__main__':
+    parser = argparse.ArgumentParser(description="List available subtitles for a show")
+    parser.add_argument("show", help="Show you want to list the subtitles for")
+    parser.add_argument("-s", "--season", help="Season you want to list", type=int, default=1)
+    parser.add_argument("-l", "--language", help="Language you want to list subtitles in", default='en')
+    args = parser.parse_args()
+
     os = OpenSubtitles()
     os.login(username=None, password=None)
+
+    show_name = args.show
+    sub_language = args.language
+    season = str(args.season)
 
     results = os.search_subtitles([{'sublanguageid': sub_language, 'query': show_name, 'season': season}])
     sorted_results = sorted(results, key=lambda x: int(x['SeriesEpisode']))
